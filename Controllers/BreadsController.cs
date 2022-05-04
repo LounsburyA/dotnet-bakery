@@ -18,5 +18,10 @@ namespace DotnetBakery.Controllers
         public BreadsController(ApplicationContext context) {
             _context = context;
         }
+        [HttpGet]
+        public IEnumerable<Bread> GetBreads(){
+            return _context.Breads
+            .Include(bread => bread.bakedBy);
+        }
     }
 }
